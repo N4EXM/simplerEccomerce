@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     // relationships 
 
-    public function carts() {
+    public function cart() {
         return $this->hasOne(Cart::class);
     } 
 

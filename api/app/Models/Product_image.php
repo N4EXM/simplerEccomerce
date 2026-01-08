@@ -20,8 +20,8 @@ class Product_image extends Model
         'image_url' => 'string'
     ];
 
-    public function products() {
-        return $this->belongsTo(Product::class);
-    }
+    // public function productImage() {
+    //     return $this->belongsTo(Product_image::class, 'product_image_id');
+    // }
 
 }
