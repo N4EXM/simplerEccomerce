@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
     >
       <Navbar/>
       {children}
-      <div className='bg-darkGreen  w-full h-72 absolute top-0 left-0'></div>
+      <div className='bg-darkGreen dark:bg-green w-full h-80 absolute top-0 left-0'></div>
     </div>
   )
 }

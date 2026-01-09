@@ -2,44 +2,30 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Cart;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, HasApiTokens, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'avatar_url'
+        'profile_image'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    protected $appends = ['profile_image_url']; // Add this line
+
     protected function casts(): array
     {
         return [
@@ -49,10 +35,28 @@ class User extends Authenticatable
     }
 
     // relationships 
-
     public function cart() {
         return $this->hasOne(Cart::class);
     } 
 
+    // Accessor method - note the naming convention
+    public function getProfileImageUrlAttribute() {
+        if ($this->profile_image) {
+            return asset('storage/avatar_images/'. $this->profile_image);
+        }
+        return null; // Return null instead of false
+    }
 
+    // Alternative: If you want to keep your original method name
+    // public function getAvatarImageUrl() {
+    //     return $this->profile_image_url;
+    // }
+
+    // Optional: You can remove the toArray() method override
+    // since the accessor is already appending the attribute
+    // public function toArray() {
+    //     $array = parent::toArray();
+    //     $array['profile_image_url'] = $this->profile_image_url;
+    //     return $array;
+    // }
 }

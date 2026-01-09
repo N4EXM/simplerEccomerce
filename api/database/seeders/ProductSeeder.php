@@ -13,6 +13,35 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::factory()->count(10)->create();
+        Product::factory()->create([
+            'product_image' => 'headphone1.jpg'
+        ]);
+        Product::factory()->create([
+            'product_image' => 'headphone2.jpg'
+        ]);
+        Product::factory()->create([
+            'product_image' => 'laptop1.jpg'
+        ]);
+        Product::factory()->create([
+            'product_image' => 'laptop2.jpg'
+        ]);
+        Product::factory()->create([
+            'product_image' => 'smart1.jpg'
+        ]);
+        Product::factory()->create([
+            'product_image' => 'smart2.jpg'
+        ]);
+        Product::factory()->create([
+            'product_image' => 'smartphone1.jpg'
+        ]);
+        Product::factory()->create([
+            'product_image' => 'smartphone2.jpg'
+        ]);
+        Product::factory()->create([
+            'product_image' => 'tablet1.jpg'
+        ]);
+        Product::factory()->create([
+            'product_image' => 'tablet2.jpg'
+        ]);
     }
 }

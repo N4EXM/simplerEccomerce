@@ -18,7 +18,8 @@ class UserSeeder extends Seeder
             'name' => 'app admin',
             'email' => 'appAdmin@example.com',
             'user_type' => 'admin',
-            'password' => bcrypt('admin1234')
+            'password' => bcrypt('admin1234'),
+            'profile_image' => 'userImage.jpg'
         ]);
 
         User::factory()->count(10)->create();

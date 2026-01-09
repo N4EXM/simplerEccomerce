@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('price', 10, 2);
             // $table->foreignId('product_image_id')->constrained()->onDelete('cascade');
-            $table->string('product_image_url');
+            $table->string('product_image');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

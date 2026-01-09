@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme {
 
   /* font styles */
@@ -11,7 +13,7 @@
 
   /* colours */
   --color-white: #ffffff;
-  --color-green: #00ba71;
+  --color-green: oklch(69.6% 0.17 162.48);
   --color-darkGreen: #014444;
   --color-gray: #48535c;
   --color-black: #161616

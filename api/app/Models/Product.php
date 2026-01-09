@@ -21,20 +21,22 @@ class Product extends Model
         'updated_at'
     ];
 
+    protected $casts = [
+        'status' => 'boolean'
+    ];
+
     // public function product_image() {
     //     return $this->hasOne(Product_image::class);
     // }
 
-    // accessor for profile image
-    public function getProductImageUrl() {
-        
-        if ($this->product_image_url) {
-            return asset('storage/product_images/'. $this->profile_image_url);
-        }
-        else {
-            return false;
-        }
+    protected $appends = ['product_image_url'];
 
+    // accessor for profile image
+    public function getProductImageUrlAttribute() {
+        if ($this->product_image) {
+            return asset('storage/product_images/'. $this->product_image);
+        }
+        return null; // Return null instead of false
     }
 
 

@@ -21,7 +21,6 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->word(),
             'price' => fake()->numberBetween(100, 200),
-            'product_image_url' => '/product_images/',
             'status' => true
         ];
     }
