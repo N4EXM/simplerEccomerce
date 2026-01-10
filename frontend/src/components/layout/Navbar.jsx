@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <div
-      className='flex items-end justify-center col-span-12 row-span-2 w-full h-full p-7 z-10 px-20'
+      className='flex items-end justify-center col-span-12 row-span-2 w-full h-full p-7 z-20 px-20'
     >
       
       <div

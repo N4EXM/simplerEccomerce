@@ -10,6 +10,8 @@ import Dashboard from './pages/Dashboard'
 import Cart from './pages/Cart'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
+import UserProducts from './pages/UserProducts'
+import Profile from './pages/Profile'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -35,7 +37,7 @@ function App() {
 
         {/* seller Dashboard */}
         <Route
-          path='/Dashboard'
+          path='/user/Dashboard'
           element={
             <ProtectedRoute>
               <Dashboard/>
@@ -49,6 +51,26 @@ function App() {
           element={
             <ProtectedRoute>
               <Cart/>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* user products edit page */}
+        <Route
+          path='/user/products'
+          element={
+            <ProtectedRoute>
+              <UserProducts/>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* user profile page */}
+        <Route
+          path='/user/profile'
+          element={
+            <ProtectedRoute>
+              <Profile/>
             </ProtectedRoute>
           }
         />

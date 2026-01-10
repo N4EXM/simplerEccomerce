@@ -39,6 +39,10 @@ class User extends Authenticatable
         return $this->hasOne(Cart::class);
     } 
 
+    public function products() {
+        return $this->hasMany(Product::class);
+    }
+
     // Accessor method - note the naming convention
     public function getProfileImageUrlAttribute() {
         if ($this->profile_image) {

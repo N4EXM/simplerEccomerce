@@ -30,19 +30,27 @@ const Login = () => {
         setIsLoading(true)
         setError('')
 
-        console.log(formDetails)
-
         try {
-            await login(formDetails)
-            navigate('/')
+            const response = await login(formDetails)
+            console.log(response)
+    
+            // Response will be the data returned from login()
+            if (response && response.success === true) {
+                navigate('/')
+            }
+            else {
+                // response.message should exist for unsuccessful cases
+                setError(response?.message || 'Login failed')
+            }
         }
-        catch (Error) {
-            setError(Error)
+        catch (error) {
+            // This catches network errors or thrown errors from login()
+            setError(error.message || 'An error occurred')
+            setIsLoading(false)
         }
         finally {
             setIsLoading(false)
         }
-
     }
 
     const handleToggleRemeberMe = () => {
@@ -54,8 +62,8 @@ const Login = () => {
     }
 
     useEffect(() => {
-        console.log(formDetails.rememberMe)
-    }, [formDetails.rememberMe])
+        console.log(error)
+    }, [error])
     
     return (
         <div

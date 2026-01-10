@@ -57,35 +57,48 @@ export const AuthProvider = ({ children }) => {
     };
 
     const login = async (formDetails) => {
-
         try {
             const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email: formDetails.email, password: formDetails.password, rememberMe: formDetails.rememberMe }),
+                body: JSON.stringify({ 
+                    email: formDetails.email, 
+                    password: formDetails.password, 
+                    rememberMe: formDetails.rememberMe 
+                }),
             });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Login failed');
-            }
-
+            // Parse response data regardless of status
             const data = await response.json();
+            
+            if (!response.ok) {
+                // Throw error for non-200 responses
+                throw new Error(data.message || 'Login failed');
+            }
 
             console.log(data)
 
-            if (formDetails.rememberMe) {
-                localStorage.setItem('token', data.token);
-                setUser(data.user);    
+            // Handle successful login
+            if (data.success === true) {
+                if (formDetails.rememberMe) {
+                    localStorage.setItem('token', data.token);
+                    setUser(data.user);    
+                }
+                else {
+                    setUser(data.user);    
+                }
+                // IMPORTANT: Return the data for successful case
+                return data;
             }
             else {
-                setUser(data.user);    
-            }
+                // Return data for unsuccessful but 200 OK response
+                return data;
+            }    
         
-            return true;
         } catch (error) {
+            // Re-throw the error to be caught by handleSubmitLogin
             throw error;
         }
     };

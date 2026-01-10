@@ -20,6 +20,9 @@ Route::post('/register', [AuthController::class, 'register']);
 // user authorised api functions
 Route::middleware('auth:sanctum')->group(function() {
 
+    // user
+    Route::post('/logout', [AuthController::class, 'logout']);
+
     // cart
     Route::get('/cart', [Cart::class, 'getUserCart']);
 

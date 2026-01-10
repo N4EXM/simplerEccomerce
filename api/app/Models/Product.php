@@ -22,12 +22,17 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'status' => 'boolean'
+        'status' => 'boolean',
+        'price' => 'decimal:2'
     ];
 
     // public function product_image() {
     //     return $this->hasOne(Product_image::class);
     // }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 
     protected $appends = ['product_image_url'];
 
@@ -38,6 +43,8 @@ class Product extends Model
         }
         return null; // Return null instead of false
     }
+
+    
 
 
 }

@@ -1,7 +1,9 @@
 import React from 'react'
+import Sidebar from '../components/layout/Sidebar'
 import SidebarLayout from '../components/layout/SidebarLayout'
 
-const Dashboard = () => {
+
+const UserProducts = () => {
   return (
     <SidebarLayout>
 
@@ -15,4 +17,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default UserProducts

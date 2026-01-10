@@ -8,7 +8,7 @@ const UserSubDetails = () => {
 
     return (
         <div
-            className='flex flex-row gap-0 w-full h-fit px-3 p-2 rounded-md hover:bg-gray/15 relative dark:hover:bg-gray cursor-pointer duration-200'
+            className='flex flex-row gap-0 w-full h-fit px-3 p-2 rounded-md hover:bg-gray/15 relative dark:hover:bg-white/10 cursor-pointer duration-200'
         >
             {/* user image container */}
             <div

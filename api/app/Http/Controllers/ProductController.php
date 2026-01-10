@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,28 @@ class ProductController extends Controller
             'success' => true,
             'products' => $products
         ]);
+
+    }
+
+    public function getUserProducts(User $user) {
+
+        $products = $user
+                    ->products()
+                    ->latest()
+                    ->get();
+
+        if ($products) {
+            return response()->json([
+                'success' => true,
+                'products' => $products
+            ]);
+        }
+
+        else {
+            return response()->json([
+                'success' => false
+            ]);
+        }
 
     }
 

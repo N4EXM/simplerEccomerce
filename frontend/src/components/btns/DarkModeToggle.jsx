@@ -11,7 +11,7 @@ const DarkModeToggle = () => {
     return (
 
         <div
-            className='flex flex-row items-center gap-2 p-3 px-2 w-full h-fit justify-between font-medium font-poppins'
+            className='flex flex-row items-center gap-2 p-2 px-2 w-full h-fit justify-between font-medium font-poppins'
         >
             {
                 theme === 'light'
