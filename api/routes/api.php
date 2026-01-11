@@ -13,6 +13,7 @@ Route::get('/user', function (Request $request) {
 // products
 Route::get('/products', [ProductController::class, 'index']);
 
+
 // user api functions
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
@@ -22,6 +23,8 @@ Route::middleware('auth:sanctum')->group(function() {
 
     // user
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/myProducts/{user}', [ProductController::class, 'getMyProducts']);
+
 
     // cart
     Route::get('/cart', [Cart::class, 'getUserCart']);

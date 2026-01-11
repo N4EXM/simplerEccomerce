@@ -12,3 +12,32 @@ export async function getProducts() {
     }
 
 }
+
+export async function getUserProducts(user_id) {
+
+    try {
+        
+        const response = await fetch(`/api/myProducts/${user_id}`, {
+
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Accept': 'application/json'
+            },
+            credentials: 'include' // Important for cookies
+        })
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+        }
+
+        const data = await response.json()
+
+        return data
+
+    }
+    catch (error) {
+        console.log(error)
+    }
+
+}

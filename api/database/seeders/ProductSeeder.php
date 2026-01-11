@@ -14,34 +14,44 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::factory()->create([
-            'product_image' => 'headphone1.jpg'
+            'product_image' => 'headphone1.jpg',
+            'user_id' => 2
         ]);
         Product::factory()->create([
-            'product_image' => 'headphone2.jpg'
+            'product_image' => 'headphone2.jpg',
+            'user_id' => 2
         ]);
         Product::factory()->create([
-            'product_image' => 'laptop1.jpg'
+            'product_image' => 'laptop1.jpg',
+            'user_id' => 3
         ]);
         Product::factory()->create([
-            'product_image' => 'laptop2.jpg'
+            'product_image' => 'laptop2.jpg',
+            'user_id' => 3
         ]);
         Product::factory()->create([
-            'product_image' => 'smart1.jpg'
+            'product_image' => 'smart1.jpg',
+            'user_id' => 2
         ]);
         Product::factory()->create([
-            'product_image' => 'smart2.jpg'
+            'product_image' => 'smart2.jpg',
+            'user_id' => 3
         ]);
         Product::factory()->create([
-            'product_image' => 'smartphone1.jpg'
+            'product_image' => 'smartphone1.jpg',
+            'user_id' => 3
         ]);
         Product::factory()->create([
-            'product_image' => 'smartphone2.jpg'
+            'product_image' => 'smartphone2.jpg',
+            'user_id' => 4
         ]);
         Product::factory()->create([
-            'product_image' => 'tablet1.jpg'
+            'product_image' => 'tablet1.jpg',
+            'user_id' => 4
         ]);
         Product::factory()->create([
-            'product_image' => 'tablet2.jpg'
+            'product_image' => 'tablet2.jpg',
+            'user_id' => 4
         ]);
     }
 }

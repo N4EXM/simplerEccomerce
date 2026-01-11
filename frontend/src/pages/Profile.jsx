@@ -1,9 +1,9 @@
 import React from 'react'
-import SidebarLayout from '../components/layout/SidebarLayout'
+import DashboardLayout from '../components/layout/DashboardLayout'
 
 const Profile = () => {
     return (
-        <SidebarLayout>
+        <DashboardLayout>
 
             <div
                 className='w-full h-full col-span-8 col-start-5 row-span-full dark:bg-white/5'
@@ -11,7 +11,7 @@ const Profile = () => {
 
             </div>
 
-        </SidebarLayout>
+        </DashboardLayout>
     )
 }
 

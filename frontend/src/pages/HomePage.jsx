@@ -12,8 +12,6 @@ const HomePage = () => {
 
     const response = await getProducts()
 
-    console.log(response)
-
     if (response.success == true) {
       setProducts(response.products.data)
     }
@@ -57,6 +55,7 @@ const HomePage = () => {
             {
               products.map((product) => (
                 <ProductCard
+                  key={product.name}
                   image={product.product_image_url}
                   name={product.name}
                   price={product.price}

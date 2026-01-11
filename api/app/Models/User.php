@@ -50,17 +50,4 @@ class User extends Authenticatable
         }
         return null; // Return null instead of false
     }
-
-    // Alternative: If you want to keep your original method name
-    // public function getAvatarImageUrl() {
-    //     return $this->profile_image_url;
-    // }
-
-    // Optional: You can remove the toArray() method override
-    // since the accessor is already appending the attribute
-    // public function toArray() {
-    //     $array = parent::toArray();
-    //     $array['profile_image_url'] = $this->profile_image_url;
-    //     return $array;
-    // }
 }

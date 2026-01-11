@@ -20,26 +20,31 @@ class ProductController extends Controller
 
     }
 
-    public function getUserProducts(User $user) {
+    // public function getUserProducts(User $user) {
 
-        $products = $user
-                    ->products()
-                    ->latest()
-                    ->get();
+    //     $products = $user
+    //             ->products()
+    //             ->latest()
+    //             ->get();
 
-        if ($products) {
-            return response()->json([
-                'success' => true,
-                'products' => $products
-            ]);
-        }
+    //     // Always return products, just indicate if empty
+    //     return response()->json([
+    //         'success' => true,
+    //         'products' => $products,
+    //         'has_products' => $products->isNotEmpty(),
+    //         'count' => $products->count()
+    //     ]);
 
-        else {
-            return response()->json([
-                'success' => false
-            ]);
-        }
+    // }
 
+    public function getMyProducts(User $user) 
+    {    
+        $products = $user->products()->get();
+    
+        return response()->json([
+            'success' => true,
+            'products' => $products
+        ]);
     }
 
 }

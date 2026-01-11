@@ -14,13 +14,13 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         
-        // User::factory()->create([
-        //     'name' => 'app admin',
-        //     'email' => 'appAdmin@example.com',
-        //     'user_type' => 'admin',
-        //     'password' => bcrypt('admin1234'),
-        //     'profile_image' => 'userImage.jpg'
-        // ]);
+        User::factory()->create([
+            'name' => 'app admin',
+            'email' => 'appAdmin@example.com',
+            'user_type' => 'admin',
+            'password' => bcrypt('admin1234'),
+            'profile_image' => 'userImage.jpg'
+        ]);
 
         User::factory()->create([
             'name' => 'John Doe',
@@ -30,7 +30,15 @@ class UserSeeder extends Seeder
             'profile_image' => 'user2.jpg'
         ]);
 
-        // User::factory()->count(10)->create();
+        User::factory()->create([
+            'name' => 'Jane Doe',
+            'email' => 'JaneDoe@example.com',
+            'user_type' => 'customer',
+            'password' => bcrypt('pass1234'),
+            'profile_image' => null
+        ]);
+
+        User::factory()->count(8)->create();
 
     }
 }

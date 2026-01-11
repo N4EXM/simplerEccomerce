@@ -32,7 +32,7 @@ const Login = () => {
 
         try {
             const response = await login(formDetails)
-            console.log(response)
+            // console.log(response)
     
             // Response will be the data returned from login()
             if (response && response.success === true) {
@@ -43,9 +43,9 @@ const Login = () => {
                 setError(response?.message || 'Login failed')
             }
         }
-        catch (error) {
+        catch {
             // This catches network errors or thrown errors from login()
-            setError(error.message || 'An error occurred')
+            setError('An error occurred, try again')
             setIsLoading(false)
         }
         finally {
@@ -72,7 +72,7 @@ const Login = () => {
 
             {/* big picture thing */}
             <div
-                className='col-span-3 dark:bg-green bg-darkGreen rounded-md flex flex-col items-start justify-between px-10 py-8 shadow shadow-black/50 dark:shadow-black relative'
+                className='col-span-3 dark:bg-green/70 bg-darkGreen rounded-md flex flex-col items-start justify-between px-10 py-8 shadow shadow-black/50 dark:shadow-black relative'
             >
 
                 {/* top part */}

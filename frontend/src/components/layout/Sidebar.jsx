@@ -14,28 +14,38 @@ const Sidebar = () => {
     {
       name: 'Dashboard',
       location: 'user/Dashboard',
-      icon: <svg  xmlns="http://www.w3.org/2000/svg" width={28} height={28} fill={"currentColor"} viewBox="0 0 24 24"><path d="M20 3h-6c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1m-1 8h-4V5h4zM10 3H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1M9 7H5V5h4zM20 15h-6c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1m-1 4h-4v-2h4zM10 11H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-8c0-.55-.45-1-1-1m-1 8H5v-6h4z"></path></svg>
+      icon: <svg  xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill={"currentColor"} viewBox="0 0 24 24"><path d="M20 3h-6c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1m-1 8h-4V5h4zM10 3H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1M9 7H5V5h4zM20 15h-6c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1m-1 4h-4v-2h4zM10 11H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-8c0-.55-.45-1-1-1m-1 8H5v-6h4z"></path></svg>
     },
     {
       name: 'Your products',
       location: 'user/products',
-      icon: <svg  xmlns="http://www.w3.org/2000/svg" width={28} height={28} fill={"currentColor"} viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2M6 20V4h12v16z"></path><path d="M8 12h8v2H8zM8 16h8v2H8zM8 6h4v4H8z"></path></svg>
+      icon: <svg  xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill={"currentColor"} viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2M6 20V4h12v16z"></path><path d="M8 12h8v2H8zM8 16h8v2H8zM8 6h4v4H8z"></path></svg>
     },
     {
       name: 'Profile',
       location: 'user/profile',
-      icon: <svg  xmlns="http://www.w3.org/2000/svg" width={28} height={28} fill={"currentColor"} viewBox="0 0 24 24"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5m0-8c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M4 22h16c.55 0 1-.45 1-1v-1c0-3.86-3.14-7-7-7h-4c-3.86 0-7 3.14-7 7v1c0 .55.45 1 1 1m6-7h4c2.76 0 5 2.24 5 5H5c0-2.76 2.24-5 5-5"></path></svg>
+      icon: <svg  xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill={"currentColor"} viewBox="0 0 24 24"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5m0-8c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M4 22h16c.55 0 1-.45 1-1v-1c0-3.86-3.14-7-7-7h-4c-3.86 0-7 3.14-7 7v1c0 .55.45 1 1 1m6-7h4c2.76 0 5 2.24 5 5H5c0-2.76 2.24-5 5-5"></path></svg>
     }
   ]
 
+  const handleLogout = async () => {      
+    try {
+      await logout()
+      navigate('/Login')
+    }
+    catch (error) {
+      console.log('error: ',error)
+    }
+  }
+
   return (
     <div
-      className='w-full h-full col-span-4 row-span-12 bg-black text-white p-5 px-7'
+      className='w-full h-full col-span-3 row-span-12 bg-black text-white p-5 px-7 relative grid grid-rows-12'
     >
       
       {/* logo button */}
       <div
-        className='flex flex-row items-center justify-between w-full h-fit'
+        className='flex flex-row items-center justify-between w-full h-fit row-span-3'
       >
         <Link
           to={'/'}
@@ -50,7 +60,7 @@ const Sidebar = () => {
         </Link>
         {/* toggle theme btn */}
         <button
-          className=' dark:bg-white bg-black p-2 rounded-full text-darkGreen dark:text-green z-20'
+          className='bg-white p-1 rounded-full text-darkGreen dark:text-green z-20'
           onClick={() => toggleDarkMode()}
         >
           {
@@ -64,11 +74,12 @@ const Sidebar = () => {
 
       {/* nav buttons */}
       <div
-        className='flex flex-col gap-3 pt-40'
+        className='flex flex-col gap-3 row-span-6'
       >
         {
           sidebarBtns.map((btn) => (
             <SidebarBtn
+              key={btn.name}
               name={btn.name}
               location={btn.location}
               icon={btn.icon}
@@ -77,6 +88,18 @@ const Sidebar = () => {
         }
       </div>
 
+      {/* logout button */}
+      <div
+        className='w-full h-full flex items-end justify-end row-span-3'
+      >
+        <button
+          className='flex flex-row items-center gap-2 w-full h-fit p-2 border-2 border-rose-500 text-rose-500 hover:bg-rose-500 hover:text-white font-medium font-poppins rounded duration-200 cursor-pointer '
+          onClick={() => handleLogout()}
+        >
+          <svg  xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill={"currentColor"} viewBox="0 0 24 24"><path d="M9 13h7v-2H9V7l-6 5 6 5z"></path><path d="M19 3h-7v2h7v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2"></path></svg>
+          Logout 
+        </button>
+      </div>
 
     </div>
   )
