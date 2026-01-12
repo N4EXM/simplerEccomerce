@@ -6,19 +6,24 @@
 
 @theme {
 
-  /* font styles */
-  --font-roboto: 'Roboto';
-  --font-montserrat: 'Montserrat';
-  --font-poppins: 'Poppins';
+    /* font styles */
+    --font-roboto: 'Roboto';
+    --font-montserrat: 'Montserrat';
+    --font-poppins: 'Poppins';
 
-  /* colours */
-  --color-white: #ffffff;
-  --color-green: oklch(69.6% 0.17 162.48);
-  --color-darkGreen: #014444;
-  --color-gray: #48535c;
-  --color-black: #161616
+    /* colours */
+    --color-white: #ffffff;
+    --color-green: oklch(69.6% 0.17 162.48);
+    --color-darkGreen: #014444;
+    --color-gray: #48535c;
+    --color-black: #161616
 
 
+}
+
+.text-sms {
+    font-size: var(13px); /* 0.875rem (14px) */ 
+    line-height: var(1.15rem); /* calc(1.25 / 0.875) */
 }
 
 .scrollbar-hide::-webkit-scrollbar {

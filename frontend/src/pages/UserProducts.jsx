@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Sidebar from '../components/layout/Sidebar'
 import DashboardLayout from '../components/layout/DashboardLayout'
 import Separator from '../components/layout/Separator'
-import FilterBtn from '../components/btns/ProductBtn'
+import ProductBtn from '../components/btns/ProductBtn'
 import { getUserProducts } from '../api_functions/productsAPI'
 import { useAuth } from '../context/AuthContext'
 import UserProductCard from '../components/cards/UserProductCard'
+import ProductViewer from '../components/usersProducts/ProductViewer'
+
 
 const UserProducts = () => {
 
@@ -14,6 +16,8 @@ const UserProducts = () => {
 
   // state
   const [userProducts, setUserProducts] = useState([])
+  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [viewer, setViewer] = useState(0) // 0: nothing selected, 1: product selected, 2: new product
 
   const productBtns = [
     {
@@ -42,21 +46,17 @@ const UserProducts = () => {
     handleGetUserProducts()
   }, [])
 
-  useEffect(() => {
-    console.log(userProducts)
-  }, [userProducts])
-
   return (
     <DashboardLayout>
 
       {/* products container */}
       <div
-        className='flex flex-col gap-2 w-full h-full col-span-5 row-span-full'
+        className='flex flex-col gap-6 w-full h-full col-span-12 col-start-0 row-span-3'
       >
 
         {/* options */}
         <div
-          className='flex flex-row items-center justify-between w-full h-fit'
+          className='flex flex-row items-center justify-between w-full h-fit dark:text-white'
         > 
           <h1
             className='font-semibold text-lg'
@@ -64,11 +64,11 @@ const UserProducts = () => {
             Products
           </h1>
           <div
-            className='flex flex-row items-center w-fit h-fit border-black/10 border-2 rounded-md'
+            className='flex flex-row items-center w-fit h-fit border-black/10 dark:border-white/10 border-2 rounded-md'
           >
             {
               productBtns.map((btn, index) => (
-                <FilterBtn
+                <ProductBtn
                   ftn={btn.option}
                   icon={btn.icon}
                   length={index}
@@ -81,18 +81,41 @@ const UserProducts = () => {
 
         {/* products */}
         <div
-          className='flex flex-col gap-2 w-full h-full overflow-y-scroll scrollbar-hide'
+          className='flex flex-row gap-2 w-full h-full items-start justify-start overflow-x-auto p-0.5 flex-nowrap scrollbar-hide'
         >
           {
             userProducts?.map((product) => (
               <UserProductCard
                 key={product.name}
+                price={product.price}
+                name={product.name}
+                image={product.product_image}
+                imageUrl={product.product_image_url}
+                productColours={['white', 'oklch(14.1% 0.005 285.823)', 'oklch(69.6% 0.17 162.48)']}
               />
             ))
-          }
+          }       
+          {
+            userProducts?.map((product) => (
+              <UserProductCard
+                key={product.name}
+                price={product.price}
+                name={product.name}
+                image={product.product_image}
+                imageUrl={product.product_image_url}
+                productColours={['white', 'oklch(14.1% 0.005 285.823)', 'oklch(69.6% 0.17 162.48)']}
+              />
+            ))
+          }         
         </div>
 
       </div>
+
+      <ProductViewer
+        selectedProduct={selectedProduct}
+        viewer={viewer}
+      />
+
 
     </DashboardLayout>
   )

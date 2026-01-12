@@ -40,7 +40,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className='w-full h-full col-span-3 row-span-12 bg-black text-white p-5 px-7 relative grid grid-rows-12'
+      className='w-full h-full col-span-3 row-span-12 bg-black/10 dark:bg-black text-darkGreen dark:text-white p-5 px-7 relative grid grid-rows-12 border-r border-gray/20'
     >
       
       {/* logo button */}
@@ -60,7 +60,7 @@ const Sidebar = () => {
         </Link>
         {/* toggle theme btn */}
         <button
-          className='bg-white p-1 rounded-full text-darkGreen dark:text-green z-20'
+          className='bg-white dark:bg-white/20 p-1 rounded-full text-darkGreen dark:text-green z-20'
           onClick={() => toggleDarkMode()}
         >
           {
