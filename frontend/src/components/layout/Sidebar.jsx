@@ -40,7 +40,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className='w-full h-full col-span-3 row-span-12 bg-black/10 dark:bg-black text-darkGreen dark:text-white p-5 px-7 relative grid grid-rows-12 border-r border-gray/20'
+      className='w-full h-full col-span-3 row-span-12 bg-black/5 dark:bg-black text-darkGreen dark:text-white p-5 px-7 relative grid grid-rows-12 border-r border-gray/20'
     >
       
       {/* logo button */}
