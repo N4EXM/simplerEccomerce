@@ -6,7 +6,6 @@ import ProductBtn from '../components/btns/ProductBtn'
 import { getUserProducts } from '../api_functions/productsAPI'
 import { useAuth } from '../context/AuthContext'
 import UserProductCard from '../components/cards/UserProductCard'
-import ProductViewer from '../components/usersProducts/ProductViewer'
 
 
 const UserProducts = () => {
@@ -69,6 +68,7 @@ const UserProducts = () => {
             {
               productBtns.map((btn, index) => (
                 <ProductBtn
+                  key={btn.option}
                   ftn={btn.option}
                   icon={btn.icon}
                   length={index}
@@ -86,35 +86,19 @@ const UserProducts = () => {
           {
             userProducts?.map((product) => (
               <UserProductCard
-                key={product.name}
+                key={product.id}
                 price={product.price}
                 name={product.name}
                 image={product.product_image}
                 imageUrl={product.product_image_url}
-                productColours={['white', 'oklch(14.1% 0.005 285.823)', 'oklch(69.6% 0.17 162.48)']}
               />
             ))
-          }       
-          {
-            userProducts?.map((product) => (
-              <UserProductCard
-                key={product.name}
-                price={product.price}
-                name={product.name}
-                image={product.product_image}
-                imageUrl={product.product_image_url}
-                productColours={['white', 'oklch(14.1% 0.005 285.823)', 'oklch(69.6% 0.17 162.48)']}
-              />
-            ))
-          }         
+          }            
         </div>
 
       </div>
 
-      <ProductViewer
-        selectedProduct={selectedProduct}
-        viewer={viewer}
-      />
+   
 
 
     </DashboardLayout>

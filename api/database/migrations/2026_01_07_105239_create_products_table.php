@@ -18,6 +18,7 @@ return new class extends Migration
             // $table->foreignId('product_image_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('product_image');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
