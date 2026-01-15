@@ -14,7 +14,8 @@ class Product extends Model
         'name',
         'price',
         'user_id',
-        'product_image_url'
+        'product_image_url',
+        // 'category_id'
     ];
 
     protected $hidden = [
@@ -35,7 +36,16 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected $appends = ['product_image_url'];
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+    
+    protected $appends = ['product_image_url', 'category_name'];
+
+    public function getCategoryNameAttribute()
+    {
+        return $this->category ? $this->category->name : null;
+    }
 
     // accessor for profile image
     public function getProductImageUrlAttribute() {

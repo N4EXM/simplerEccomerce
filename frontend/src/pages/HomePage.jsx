@@ -13,7 +13,7 @@ const HomePage = () => {
     const response = await getProducts()
 
     if (response.success == true) {
-      setProducts(response.products.data)
+      setProducts(response.products)
     }
 
   }

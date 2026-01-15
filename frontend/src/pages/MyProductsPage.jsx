@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext'
 import UserProductCard from '../components/cards/UserProductCard'
 
 
-const UserProducts = () => {
+const MyProductsPage = () => {
 
   // context
   const { user } = useAuth()
@@ -105,4 +105,4 @@ const UserProducts = () => {
   )
 }
 
-export default UserProducts
+export default MyProductsPage

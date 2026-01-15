@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,7 +22,8 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->word(),
             'price' => fake()->numberBetween(100, 200),
-            'status' => true
+            'status' => true,
+            'category_id' => Category::inRandomOrder()->first()->id
         ];
     }
 }

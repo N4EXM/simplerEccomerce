@@ -43,7 +43,7 @@ const UserDropDown = () => {
         },
         {
             name: 'Your products',
-            location: 'user/products',
+            location: 'user/MyProducts',
             icon: <svg  xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill={"currentColor"} viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2M6 20V4h12v16z"></path><path d="M8 12h8v2H8zM8 16h8v2H8zM8 6h4v4H8z"></path></svg>
         }
     ]

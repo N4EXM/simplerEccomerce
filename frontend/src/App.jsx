@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
@@ -10,8 +8,8 @@ import Dashboard from './pages/Dashboard'
 import Cart from './pages/Cart'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
-import UserProducts from './pages/UserProducts'
 import Profile from './pages/Profile'
+import MyProductsPage from './pages/MyProductsPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -57,10 +55,10 @@ function App() {
 
         {/* user products edit page */}
         <Route
-          path='/user/products'
+          path='/user/MyProducts'
           element={
             <ProtectedRoute>
-              <UserProducts/>
+              <MyProductsPage/>
             </ProtectedRoute>
           }
         />

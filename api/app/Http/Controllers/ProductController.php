@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,31 +12,20 @@ class ProductController extends Controller
     
     public function index(Request $request, Product $product) {
 
-        $products = $product->where('status', true)->orderBy('created_at', 'desc')->paginate(10);
+        $products = $product
+                    ->where('status', true)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
 
         return response()->json([
             'success' => true,
-            'products' => $products
+            'products' => $products,
+            // 'categories' => $categories
         ]);
 
     }
 
-    // public function getUserProducts(User $user) {
-
-    //     $products = $user
-    //             ->products()
-    //             ->latest()
-    //             ->get();
-
-    //     // Always return products, just indicate if empty
-    //     return response()->json([
-    //         'success' => true,
-    //         'products' => $products,
-    //         'has_products' => $products->isNotEmpty(),
-    //         'count' => $products->count()
-    //     ]);
-
-    // }
 
     public function getMyProducts(User $user) 
     {    
