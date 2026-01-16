@@ -5,7 +5,8 @@ import Separator from '../components/layout/Separator'
 import ProductBtn from '../components/btns/ProductBtn'
 import { getUserProducts } from '../api_functions/productsAPI'
 import { useAuth } from '../context/AuthContext'
-import UserProductCard from '../components/cards/UserProductCard'
+import UserProductCard from '../components/cards/MyProductCard'
+import CategoriesProducts from '../components/layout/CategoriesProducts'
 
 
 const MyProductsPage = () => {
@@ -15,6 +16,7 @@ const MyProductsPage = () => {
 
   // state
   const [userProducts, setUserProducts] = useState([])
+  const [categories, setCategories] = useState([])
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [viewer, setViewer] = useState(1) // 0: nothing selected, 1: product selected, 2: new product
 
@@ -36,7 +38,13 @@ const MyProductsPage = () => {
     console.log(response)
 
     if (response.success) {
-      setUserProducts(response.products)
+
+      const products = response.products 
+
+      const categories = [...new Set(products.map(p => p.category_name))]
+
+      setCategories(categories)
+      setUserProducts(products)
     }
 
   }
@@ -45,12 +53,16 @@ const MyProductsPage = () => {
     handleGetUserProducts()
   }, [])
 
+  useEffect(() => {
+    console.log(categories)
+  }, [categories])
+
   return (
     <DashboardLayout>
 
       {/* products container */}
       <div
-        className='flex flex-col gap-6 w-full h-full col-span-12 col-start-0 row-span-3'
+        className='flex flex-col gap-6 w-full h-full col-span-12 col-start-0 row-span-1'
       >
 
         {/* options */}
@@ -60,7 +72,7 @@ const MyProductsPage = () => {
           <h1
             className='font-semibold text-xl'
           >
-            Products
+            My Products
           </h1>
           <div
             className='flex flex-row items-center w-fit h-fit border-black/10 dark:border-white/10 border-2 rounded-md'
@@ -79,26 +91,28 @@ const MyProductsPage = () => {
           </div>
         </div>
 
-        {/* products */}
-        <div
-          className='flex flex-row gap-2 w-full h-full items-start justify-start overflow-x-auto p-0.5 flex-nowrap scrollbar-hide'
-        >
-          {
-            userProducts?.map((product) => (
-              <UserProductCard
-                key={product.id}
-                price={product.price}
-                name={product.name}
-                image={product.product_image}
-                imageUrl={product.product_image_url}
-              />
-            ))
-          }            
-        </div>
-
       </div>
 
-   
+      {/* categories */}
+      <div
+        className='w-full h-full flex flex-row flex-nowrap gap-5 overflow-x-scroll row-span-11 col-span-12 p-0.5 pb-1'
+      >
+        {
+          categories.map((cat) => (
+            <CategoriesProducts
+              name={cat}
+              products={userProducts.filter((product) => product.category_name === cat)}
+            />
+          ))
+        }
+        {/* {
+          categories.map((cat) => (
+            <CategoriesProducts
+              name={cat}
+            />
+          ))
+        } */}
+      </div>
 
 
     </DashboardLayout>
