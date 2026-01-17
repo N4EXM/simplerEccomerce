@@ -7,11 +7,12 @@ const ProductCard = ({ image, name, price,  }) => {
         >
             {/* image container */}
             <div
-                className='flex h-3/5 w-full p-6 items-center bg-white rounded-t'
+                className='flex h-3/5 w-full p-6 xl:p-0 justify-center items-center bg-white rounded-t'
             >
                 <img 
                     src={image} 
                     alt="productImage" 
+                    className='w-full h-full xl:w-3/4 xl:h-3/4'
                 />
             </div>
 

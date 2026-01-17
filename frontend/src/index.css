@@ -14,7 +14,7 @@
     /* colours */
     --color-white: #ffffff;
     --color-green: oklch(69.6% 0.17 162.48);
-    --color-darkGreen: #014444;
+    --color-darkGreen: oklch(37.8% 0.077 168.94);
     --color-gray: #48535c;
     --color-black: #161616
 

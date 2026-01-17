@@ -6,7 +6,7 @@ import MyProductCard from '../cards/MyProductCard'
 const CategoriesProducts = ({ products, name }) => {
     return (
         <div
-            className='w-full h-full flex flex-col dark:bg-white/5 bg-black/5 dark:shadow-slate-950 rounded-md shadow shadow-gray/80 min-w-80 dark:text-white'
+            className='w-full h-full flex flex-col dark:bg-white/5 bg-black/5 dark:shadow-slate-950 rounded-md shadow shadow-gray/50 min-w-80 dark:text-white'
         >
             <div
                 className='flex flex-row items-center w-full h-fit p-4 pb-0 gap-2'
@@ -33,7 +33,7 @@ const CategoriesProducts = ({ products, name }) => {
                             image={product.product_image_url}
                             name={product.name}
                             price={product.price}
-                            stockAvailability={true}
+                            stockAvailability={false}
                         />
                     ))
                 }

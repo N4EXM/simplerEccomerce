@@ -60,7 +60,7 @@ const Sidebar = () => {
         </Link>
         {/* toggle theme btn */}
         <button
-          className='bg-white dark:bg-white/20 p-1 rounded-full text-darkGreen dark:text-green z-20'
+          className='bg-white dark:bg-white/10 p-1 rounded-full text-darkGreen dark:text-green z-20'
           onClick={() => toggleDarkMode()}
         >
           {

@@ -67,7 +67,7 @@ const MyProductCard = ({ image, name, price, productColours, stockAvailability }
             className='flex w-5/10 h-full justify-end'
           >
             <p
-              className={`${stockAvailability ? 'text-darkGreen bg-green/30 dark:bg-green/90' : 'text-rose-700 bg-red-200'} w-fit h-fit text-[10px] px-2 p-1 rounded font-medium`}
+              className={`${stockAvailability ? 'text-darkGreen bg-green/30 dark:bg-green/50 dark:text-green' : 'text-rose-700 bg-red-200'} w-fit h-fit text-[10px] px-2 p-1 rounded font-medium`}
             >
               {
                 stockAvailability
@@ -84,18 +84,18 @@ const MyProductCard = ({ image, name, price, productColours, stockAvailability }
           className='w-full h-5/10 flex items-end justify-between'
         >
 
-            <div>
+          <div>
 
-            </div>
+          </div>
 
-            {/* price */}
-            <div>
-              <p
-                className='text-sm font-medium'
-              >
-                £{price}
-              </p>
-            </div>
+          {/* price */}
+          <div>
+            <p
+              className='text-sm font-medium'
+            >
+              £{price}
+            </p>
+          </div>
 
         </div>
 
