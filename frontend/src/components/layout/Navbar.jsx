@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import NavBtn from '../btns/NavBtn'
-import UserDropDown from './UserDropDown'
+import UserDropDown from '../layout/dropdowns/UserDropDown'
 
 const Navbar = () => {
 

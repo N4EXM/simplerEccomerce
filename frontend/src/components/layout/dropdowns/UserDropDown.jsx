@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useAuth } from '../../context/AuthContext'
-import DropDownBtn from '../btns/DropDownBtn'
-import Separator from './Separator'
-import UserSubDetails from './UserSubDetails'
-import DarkModeToggle from '../btns/DarkModeToggle'
+import { useAuth } from '../../../context/AuthContext'
+import DropDownBtn from '../../btns/DropDownBtn'
+import Separator from '../Separator'
+import UserSubDetails from '../dropdowns/UserSubDetails'
+import DarkModeToggle from '../../btns/DarkModeToggle'
 import { useNavigate } from 'react-router-dom'
 
 const UserDropDown = () => {

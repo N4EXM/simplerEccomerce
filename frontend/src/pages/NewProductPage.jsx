@@ -3,19 +3,24 @@ import DashboardLayout from '../components/layout/DashboardLayout'
 import NormalInput from '../components/inputs/NormalInput'
 import TextAreaInput from '../components/inputs/TextAreaInput'
 import ImageInput from '../components/inputs/ImageInput'
+import ImageCard from '../components/cards/ImageCard'
+import CategoriesDropdown from '../components/layout/dropdowns/CategoriesDropdown'
+
 
 const NewProductPage = () => {
 
     const [product, setProduct] = useState({
         name: '',
         description: '',
-        images: []
+        thumbnail: null,
+        images: [],
+        category: null
     })
 
-    const handleImages = (image) => {
+    const handleExtraImages = (image) => {
 
-        if (product.images.includes(image.name)) {
-            const newImages = product.images.filter(image => image.name !== image.name)
+        if (product.images.includes(image)) {
+            const newImages = product.images.filter(i => i !== image) 
             setProduct({...product, images: newImages})
         }   
         else {
@@ -23,6 +28,24 @@ const NewProductPage = () => {
         }
 
     }
+
+    const handleThumbnailImage = (image) => {
+
+        if (product.thumbnail === image) {
+            setProduct({...product, thumbnail: null})
+        }
+        else {
+            setProduct({...product, thumbnail: image})
+        }
+
+    }
+
+    const handleSelectedCategory = (category) => {
+
+        setProduct({...product, category: category})
+
+    }
+
 
     useEffect(() => {
         console.log(product)
@@ -103,26 +126,46 @@ const NewProductPage = () => {
                         {
                             product.images.map((image) => {
 
-                                let currentImage = null
-
-                                const reader = new FileReader()
-                                reader.onloadend = () => {
-                                    currentImage = reader.result
-                                }
-                                reader.readAsDataURL(image);
+                                const imageUrl = URL.createObjectURL(image)
 
                                 return (
-                                    <div>
-                                        <img src={currentImage} alt="" />
-                                    </div>
+                                    <ImageCard
+                                        name={image.name}
+                                        imageUrl={imageUrl}
+                                        handleImages={() => handleExtraImages(image)}
+                                    />
                                 )
 
                             })          
                         }
-                        <ImageInput
-                            handleImages={handleImages}
-                        />
+                        {
+                            product.images.length < 3
+                            &&  <ImageInput
+                                    handleImages={handleExtraImages}
+                                />
+                        }
                     </div>
+
+                </div>
+
+                {/* SEO */}
+                <div
+                    className='flex flex-col gap-5 w-full h-fit bg-black/5 dark:bg-black p-5 rounded-md shadow shadow-gray/50 dark:shadow-slate-950'
+                >
+                    <div
+                        className='flex flex-col gap-1 w-full h-fit'
+                    >
+                        <h1
+                            className='font-semibold text-lg dark:text-white'
+                        >
+                            SEO
+                        </h1>
+                        <p
+                            className='text-sm text-black/50 dark:text-white/50'
+                        >
+                            Modify the SEO of your product to make it more accessible for customers
+                        </p>
+                    </div>  
 
                 </div>
 
@@ -130,8 +173,68 @@ const NewProductPage = () => {
 
             {/* second menu */}
             <div
-                className='col-span-4 row-span-12 w-full h-full flex flex-col gap-5'
+                className='col-span-4 row-span-12 w-full h-full flex flex-col gap-5 overflow-y-scroll p-0.5 scrollbar-hide '
             >
+
+                {/* thumbnail image */}
+                <div
+                    className='flex flex-col gap-5 w-full h-fit bg-black/5 dark:bg-black p-5 rounded-md shadow shadow-gray/50 dark:shadow-slate-950'
+                >
+                    <div
+                        className='flex flex-col gap-1 w-full h-fit'
+                    >
+                        <h1
+                            className='font-semibold text-lg dark:text-white'
+                        >
+                            Thumbnail
+                        </h1>
+                        <p
+                            className='text-sm text-black/50 dark:text-white/50'
+                        >
+                            Add a Thumbnail image to your product, only jpeg or png file are accepted.
+                        </p>
+                    </div>  
+
+                    <div
+                        className='flex items-center justify-center w-full h-fit'
+                    >
+                        {
+                            product.thumbnail === null
+                            ?   <ImageInput
+                                    handleImages={handleThumbnailImage}
+                                />
+                            :   <ImageCard
+                                    imageUrl={URL.createObjectURL(product.thumbnail)}
+                                    name={product.thumbnail.name}
+                                    handleImages={() => handleThumbnailImage(product.thumbnail)}
+                                />
+                        }
+                    </div>
+                </div>
+
+                {/* category selection */}
+                <div
+                    className='flex flex-col gap-5 w-full h-fit bg-black/5 dark:bg-black p-5 rounded-md shadow shadow-gray/50 dark:shadow-slate-950'
+                >
+                    <div
+                        className='flex flex-col gap-1 w-full h-fit'
+                    >
+                        <h1
+                            className='font-semibold text-lg dark:text-white'
+                        >
+                            Category
+                        </h1>
+                        <p
+                            className='text-sm text-black/50 dark:text-white/50'
+                        >
+                            Apply a category to your product so it can be filtered by the customer.
+                        </p>
+                    </div>  
+                    <CategoriesDropdown
+                        selectedCategory={product.category}
+                        handleSelectedCategory={handleSelectedCategory}
+                    />
+                </div>
 
             </div>
 

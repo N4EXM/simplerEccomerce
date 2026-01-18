@@ -6,7 +6,7 @@ import ProductBtn from '../components/btns/ProductBtn'
 import { getUserProducts } from '../api_functions/productsAPI'
 import { useAuth } from '../context/AuthContext'
 import UserProductCard from '../components/cards/MyProductCard'
-import CategoriesProducts from '../components/layout/CategoriesProducts'
+import CategoriesProducts from '../components/usersProducts/CategoriesProducts'
 import { useNavigate } from 'react-router-dom'
 
 

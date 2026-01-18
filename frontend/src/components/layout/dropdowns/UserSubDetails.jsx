@@ -1,6 +1,6 @@
 import React from 'react'
-import { useAuth } from '../../context/AuthContext'
-import { truncateText } from '../../utils/textUtils'
+import { useAuth } from '../../../context/AuthContext'
+import { truncateText } from '../../../utils/textUtils'
 
 const UserSubDetails = () => {
 

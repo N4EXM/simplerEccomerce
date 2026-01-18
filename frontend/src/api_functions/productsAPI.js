@@ -41,3 +41,7 @@ export async function getUserProducts(user_id) {
     }
 
 }
+
+export async function getCategories() {
+
+}

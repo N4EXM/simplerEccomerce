@@ -49,7 +49,7 @@ const Sidebar = () => {
       >
         <Link
           to={'/'}
-          className='flex flex-row items-center gap-3 text-2xl font-semibold font-poppins'
+          className='flex flex-row items-center gap-3 text-2xl font-semibold font-poppins text-black dark:text-white'
         >
           <i
             className='p-1 rounded-md bg-darkGreen text-white dark:bg-green'

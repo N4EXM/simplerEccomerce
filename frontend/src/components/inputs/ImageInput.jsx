@@ -16,7 +16,7 @@ const ImageInput = ({ handleImages }) => {
 
     return (
         <div
-            className='flex flex-col w-32 h-32 border-gray dark:border-white/50 border-2 border-dashed rounded-md relative'
+            className='flex flex-col w-28 h-28 border-gray/50 dark:border-white/50 border-2 border-dashed rounded-md relative '
         >
             <input 
                 type="file" 
@@ -25,7 +25,7 @@ const ImageInput = ({ handleImages }) => {
                 className='hidden'
             />
             <button
-                className='w-full h-full relative'
+                className='w-full h-full relative cursor-pointer'
                 onClick={triggerFileInput}
             >
                 <svg className='text-gray dark:text-white/50 absolute top-1/2 left-1/2 -translate-1/2' xmlns="http://www.w3.org/2000/svg" width={48} height={48} fill={"currentColor"} viewBox="0 0 24 24"><path d="m12 12-1-1-2 3h10l-4-6z"></path><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2M8 16V4h12v12z"></path><path d="M4 8H2v12c0 1.1.9 2 2 2h12v-2H4z"></path></svg>
