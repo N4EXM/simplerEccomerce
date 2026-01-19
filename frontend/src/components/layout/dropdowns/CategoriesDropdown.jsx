@@ -56,11 +56,12 @@ const CategoriesDropdown = ({ selectedCategory, handleSelectedCategory }) => {
                 className={`${toggleDropdown ? 'flex' : 'hidden'} h-fit w-full absolute top-10 left-0 bg-white rounded-md shadow shadow-gray/50 dark:shadow-slate-950 flex-col`}
             >
                 <div
-                    className='flex flex-col w-full h-full p-1 dark:bg-black/90'
+                    className='flex flex-col w-full h-40 overflow-y-scroll scrollbar-hide p-1 dark:bg-black/90'
                 >
                     {
                         categories.map((category) => (
                             <button
+                                key={category.name}
                                 className='text-start p-2 px-3 text-sm font-medium hover:bg-black/10 dark:hover:bg-white/10 rounded duration-200'
                                 onClick={() => handleSelectingCategory(category)}
                             >
