@@ -5,6 +5,7 @@ import TextAreaInput from '../components/inputs/TextAreaInput'
 import ImageInput from '../components/inputs/ImageInput'
 import ImageCard from '../components/cards/ImageCard'
 import CategoriesDropdown from '../components/layout/dropdowns/CategoriesDropdown'
+import ToggleBtn from '../components/btns/ToggleBtn'
 import { generateSlug } from '../utils/SEO_slug'
 
 
@@ -17,7 +18,9 @@ const NewProductPage = () => {
         images: [],
         category: null,
         slug: '',
-        quantity: null
+        quantity: null,
+        sku: null,
+        status: true
     })
 
     const handleExtraImages = (image) => {
@@ -53,17 +56,6 @@ const NewProductPage = () => {
         setProduct({...product, slug: generateSlug(product.name)})
     }
 
-    const handleChange = useCallback((fieldName) => (e) => {
-        const inputValue = e.target.value;
-        
-        // Allow empty string or positive numbers with decimals
-        if (inputValue === '' || /^\d*\.?\d*$/.test(inputValue)) {
-            setValues(prev => ({
-            ...prev,
-            [fieldName]: inputValue
-        }));
-    }}, []);
-
     useEffect(() => {
         console.log(product)
     }, [product])
@@ -71,9 +63,31 @@ const NewProductPage = () => {
     return (
         <DashboardLayout>
 
+            {/* title bar */}
+            <div
+                className='row-span-1 col-span-full w-full flex flex-row items-center justify-between p-0.5'
+            >
+                {/* product name */}
+                <h1
+                    className='text-2xl font-semibold dark:text-white text-darkGreen'
+                >
+                    {product.name}
+                </h1>
+
+                {/* publish button */}
+                <button
+                    className='p-1.5 w-fit h-fit px-3.5 duration-200 rounded text-white hover:text-white/80 font-medium bg-darkGreen hover:bg-darkGreen/50 dark:bg-green dark:hover:bg-green/70 text-sm flex flex-row items-center gap-1'
+                >
+                    <svg  xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill={"currentColor"} viewBox="0 0 24 24">{/* Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free */}<path d="M4 4h16v2H4zm8 4-5 6h4v7h2v-7h4z"></path></svg>
+                    Publish
+                </button>
+
+            </div>
+
+
             {/* first menu */}
             <div
-                className='col-span-8 row-span-12 w-full h-full overflow-y-scroll scrollbar-hide flex flex-col gap-5 p-0.5 pb-1'
+                className='col-span-8 row-span-11 w-full h-full overflow-y-scroll scrollbar-hide flex flex-col gap-5 p-0.5 pb-'
             >
 
                 {/* general */}
@@ -229,12 +243,22 @@ const NewProductPage = () => {
 
                     <NormalInput
                         type={'number'}
-                        onChange={(e) => setProduct({...product, quantity})}
+                        onChange={(e) => setProduct({...product, quantity:e.target.value})}
                         value={product.quantity}
                         placeholder={'Stock quantity...'}
                         name={'Quantity'}
                         isRequired={true}
-                        extraInfo={''}
+                        extraInfo={'Add a quantity for the stock so you can track metrics'}
+                    />
+
+                    <NormalInput
+                        type={'text'}
+                        onChange={(e) => setProduct({...product, sku: e.target.value })}
+                        value={product.sku}
+                        placeholder={'SKU number...'}
+                        name={'SKU'}
+                        isRequired={false}
+                        extraInfo={'Add an SKU number so you can track it individually'}
                     />
 
                 </div>
@@ -243,7 +267,7 @@ const NewProductPage = () => {
 
             {/* second menu */}
             <div
-                className='col-span-4 row-span-12 w-full h-full flex flex-col gap-5 overflow-y-scroll p-0.5 scrollbar-hide '
+                className='col-span-4 row-span-11 w-full h-full flex flex-col gap-5 overflow-y-scroll p-0.5 scrollbar-hide '
             >
 
                 {/* thumbnail image */}
@@ -306,7 +330,31 @@ const NewProductPage = () => {
                     />
                 </div>
 
-                
+                {/* is it visible by customers */}
+                <div
+                    className='flex flex-col gap-5 w-full h-fit bg-black/5 dark:bg-black p-5 rounded-md shadow shadow-gray/50 dark:shadow-slate-950'
+                >
+                    <div
+                        className='flex flex-col gap-1 w-full h-fit'
+                    >
+                        <h1
+                            className='font-semibold text-lg dark:text-white'
+                        >
+                            Visibility
+                        </h1>
+                        <p
+                            className='text-sm text-black/50 dark:text-white/50'
+                        >
+                            Do you want this product to be seen by others?
+                        </p>
+                    </div>  
+                    <ToggleBtn
+                        icon={<svg  xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill={"currentColor"} viewBox="0 0 24 24"><path d="M12 17c-5.35 0-7.42-3.84-7.93-5 .2-.46.65-1.34 1.45-2.23l-1.4-1.4c-1.49 1.65-2.06 3.28-2.08 3.31-.07.21-.07.43 0 .63.02.07 2.32 6.68 9.95 6.68.91 0 1.73-.1 2.49-.26l-1.77-1.77c-.24.02-.47.03-.72.03Zm9.95-4.68c.07-.21.07-.43 0-.63-.02-.07-2.32-6.68-9.95-6.68-1.84 0-3.36.39-4.61.97L2.71 1.29 1.3 2.7l4.32 4.32 1.42 1.42 2.27 2.27 3.98 3.98 1.8 1.8 1.53 1.53 4.68 4.68 1.41-1.41-4.32-4.32c2.61-1.95 3.55-4.61 3.56-4.65m-7.25.97c.19-.39.3-.83.3-1.29 0-1.64-1.36-3-3-3-.46 0-.89.11-1.29.3l-1.8-1.8c.88-.31 1.9-.5 3.08-.5 5.35 0 7.42 3.85 7.93 5-.3.69-1.18 2.33-2.96 3.55z"></path></svg>}
+                        name={'Visibility'}
+                        value={product.status}
+                        ftn={() => setProduct({...product, status: !product.status})}
+                    />
+                </div>
 
             </div>
 

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('product_image', function (Blueprint $table) {
             $table->id();
             $table->string('image_url');
+            $table->enum('image_type',['thumbnail', 'extra'])->nullable();
             $table->timestamps();
         });
     }
